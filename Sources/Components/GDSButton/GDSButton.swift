@@ -48,6 +48,7 @@ public final class GDSButton: UIButton, ContentView {
             )
         }
 
+        self.shouldGroupAccessibilityChildren = true
         if let accessibilityTraits = viewModel.accessibilityTraits {
             self.accessibilityTraits = accessibilityTraits
         }

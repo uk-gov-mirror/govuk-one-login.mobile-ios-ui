@@ -254,6 +254,22 @@ struct GDSButtonTests {
         #expect(sut.accessibilityIdentifier == "any identifier")
    }
     
+    @Test("Button groups accessibility children")
+    func buttonGroupAccessibilityChildren() {
+        let viewModel = GDSButtonViewModel(
+            title: TitleForState(normal: "test title"),
+            icon: nil,
+            style: .secondary,
+            buttonAction: .action({}),
+            accessibilityIdentifier: "any identifier"
+        )
+        let sut = GDSButton(viewModel: viewModel)
+        // normally gets invoked by UIKit so we need to call manually here
+        sut.configurationUpdateHandler?(sut)
+        
+        #expect(sut.shouldGroupAccessibilityChildren == true)
+   }
+    
     @Test("Button with border set, corner radius is correct")
     func buttonCustomBorderStyleCornerRadius() {
         let secondaryWithBorderStyle = GDSButtonStyle(
